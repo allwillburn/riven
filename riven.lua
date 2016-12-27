@@ -105,7 +105,7 @@ OnTick(function (myHero)
           if Mix:Mode() == "Harass" then
             if RivenMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 				if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSkillShot(target, _Q)
                                 end
             end
 
