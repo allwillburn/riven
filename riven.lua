@@ -208,7 +208,7 @@ OnTick(function (myHero)
       if Mix:Mode() == "LaneClear" then
       	  for _,closeminion in pairs(minionManager.objects) do
 	        if RivenMenu.LaneClear.Q:Value() and Ready(_Q) and ValidTarget(closeminion, 260) then
-	        	CastSkillShot(closeminion, _Q)
+	        	CastTargetSpell(closeminion, _Q)
                 end
 
                 if RivenMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 125) then
