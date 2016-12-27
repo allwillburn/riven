@@ -30,7 +30,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/allwillburn/Jax/master/Jax.
 GetLevelPoints = function(unit) return GetLevel(unit) - (GetCastLevel(unit,0)+GetCastLevel(unit,1)+GetCastLevel(unit,2)+GetCastLevel(unit,3)) end
 local SetDCP, SkinChanger = 0
 
-local JaxMenu = Menu("Riven", "Riven")
+local RivenMenu = Menu("Riven", "Riven")
 
 RivenMenu:SubMenu("Combo", "Combo")
 
