@@ -70,6 +70,7 @@ RivenMenu.Harass:Boolean("W", "Use W", true)
 RivenMenu:SubMenu("KillSteal", "KillSteal")
 RivenMenu.KillSteal:Boolean("Q", "KS w Q", true)
 RivenMenu.KillSteal:Boolean("E", "KS w E", true)
+RivenMenu.KillSteal:Boolean("R", "KS w R", true)
 
 RivenMenu:SubMenu("AutoIgnite", "AutoIgnite")
 RivenMenu.AutoIgnite:Boolean("Ignite", "Ignite if killable", true)
@@ -102,19 +103,24 @@ OnTick(function (myHero)
         
         --Harass
           if Mix:Mode() == "Harass" then
-            if RivenMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 700) then
+            if RivenMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 				if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSkillShot(_Q, enemy)
                                 end
             end
 
-            if RivenMenu.Harass.W:Value() and Ready(_W) and ValidTarget(target, 700) then
+            if RivenMenu.Harass.W:Value() and Ready(_W) and ValidTarget(target, 125) then
 				CastSpell(_W)
             end     
           end
 
 	--COMBO
 	  if Mix:Mode() == "Combo" then
+		
+	    if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 325) and (EnemiesAround(myHeroPos(), 325) >= RivenMenu.Combo.RX:Value()) then
+			CastSpell(_R)
+            end
+			
             if RivenMenu.Combo.YGB:Value() and YGB > 0 and Ready(YGB) and ValidTarget(target, 700) then
 			CastSpell(YGB)
             end
@@ -131,13 +137,13 @@ OnTick(function (myHero)
 			 CastTargetSpell(target, Cutlass)
             end
 
-            if RivenMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
-			 CastSpell(_E)
+            if RivenMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 325) then
+			 CastSkillShot(_E, target.pos)
 	    end
 
-            if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 700) then
+            if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 		     if target ~= nil then 
-                         CastTargetSpell(target, _Q)
+                         CastSkillShot(_Q, enemy)
                      end
             end
 
@@ -153,13 +159,12 @@ OnTick(function (myHero)
 			CastSpell(RHydra)
             end
 
-	    if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 700) then
+	    if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then
 			CastSpell(_W)
 	    end
-	    
-	    
-            if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 700) and (EnemiesAround(myHeroPos(), 700) >= JaxMenu.Combo.RX:Value()) then
-			CastSpell(_R)
+	    	                			
+            if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 700) and (EnemiesAround(myHeroPos(), 700) >= RivenMenu.Combo.RX:Value()) then
+			CastSkillShot(_R, enemy)
             end
 
           end
@@ -188,29 +193,29 @@ OnTick(function (myHero)
 
         for _, enemy in pairs(GetEnemyHeroes()) do
                 
-                if IsReady(_Q) and ValidTarget(enemy, 700) and RivenMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
+                if IsReady(_Q) and ValidTarget(enemy, 260) and RivenMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
 		         if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSkillShot(_Q, enemy)
 		         end
                 end 
 
-                if IsReady(_E) and ValidTarget(enemy, 187) and RivenMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
-		                      CastSpell(_E)
+                if IsReady(_R) and ValidTarget(enemy, 900) and RivenMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
+		                      CastSkillShot(_R, enemy)
   
                 end
       end
 
       if Mix:Mode() == "LaneClear" then
       	  for _,closeminion in pairs(minionManager.objects) do
-	        if RivenMenu.LaneClear.Q:Value() and Ready(_Q) and ValidTarget(closeminion, 700) then
-	        	CastTargetSpell(closeminion, _Q)
+	        if RivenMenu.LaneClear.Q:Value() and Ready(_Q) and ValidTarget(closeminion, 260) then
+	        	CastSkillShot(closeminion, _Q)
                 end
 
-                if RivenMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 700) then
+                if RivenMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 125) then
 	        	CastSpell(_W)
 	        end
 
-                if RivenMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 187) then
+                if RivenMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 325) then
 	        	CastSpell(_E)
 	        end
 
@@ -225,17 +230,17 @@ OnTick(function (myHero)
       end
         --AutoMode
         if RivenMenu.AutoMode.Q:Value() then        
-          if Ready(_Q) and ValidTarget(target, 700) then
-		      CastTargetSpell(target, _Q)
+          if Ready(_Q) and ValidTarget(target, 260) then
+		      CastSkillShot(_Q, enemy)
           end
         end 
         if RivenMenu.AutoMode.W:Value() then        
-          if Ready(_W) and ValidTarget(target, 700) then
+          if Ready(_W) and ValidTarget(target, 125) then
 	  	      CastSpell(_W)
           end
         end
         if RivenMenu.AutoMode.E:Value() then        
-	  if Ready(_E) and ValidTarget(target, 125) then
+	  if Ready(_E) and ValidTarget(target, 325) then
 		      CastSpell(_E)
 	  end
         end
@@ -258,7 +263,7 @@ end)
 OnDraw(function (myHero)
         
          if RivenMenu.Drawings.DQ:Value() then
-		DrawCircle(GetOrigin(myHero), 700, 0, 200, GoS.Black)
+		DrawCircle(GetOrigin(myHero), 260, 0, 150, GoS.Black)
 	end
 
 end)
@@ -267,7 +272,7 @@ end)
 OnProcessSpell(function(unit, spell)
 	local target = GetCurrentTarget()        
        
-        if unit.isMe and spell.name:lower():find("jaxempowertwo") then 
+        if unit.isMe and spell.name:lower():find("rivenbrokenwings") then 
 		Mix:ResetAA()	
 	end        
 
