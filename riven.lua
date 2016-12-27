@@ -105,7 +105,7 @@ OnTick(function (myHero)
           if Mix:Mode() == "Harass" then
             if RivenMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 				if target ~= nil then 
-                                      CastSkillShot(_Q, enemy)
+                                      CastSkillShot(_Q, target.pos)
                                 end
             end
 
@@ -143,7 +143,7 @@ OnTick(function (myHero)
 
             if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 		     if target ~= nil then 
-                         CastSkillShot(_Q, enemy)
+                         CastSkillShot(_Q, target.pos)
                      end
             end
 
@@ -231,7 +231,7 @@ OnTick(function (myHero)
         --AutoMode
         if RivenMenu.AutoMode.Q:Value() then        
           if Ready(_Q) and ValidTarget(target, 260) then
-		      CastSkillShot(_Q, enemy)
+		      CastSkillShot(_Q, target.pos)
           end
         end 
         if RivenMenu.AutoMode.W:Value() then        
