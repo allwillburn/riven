@@ -105,7 +105,7 @@ OnTick(function (myHero)
           if Mix:Mode() == "Harass" then
             if RivenMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 				if target ~= nil then 
-                                      CastSkillShot(_Q, target.pos)
+                                      CastTargetSpell(target, _Q)
                                 end
             end
 
@@ -143,7 +143,7 @@ OnTick(function (myHero)
 
             if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 260) then
 		     if target ~= nil then 
-                         CastSkillShot(_Q, target.pos)
+                         CastTargetSpell(target, _Q)
                      end
             end
 
@@ -195,7 +195,7 @@ OnTick(function (myHero)
                 
                 if IsReady(_Q) and ValidTarget(enemy, 260) and RivenMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
 		         if target ~= nil then 
-                                      CastSkillShot(_Q, enemy)
+                                      CastTargetSpell(target, _Q)
 		         end
                 end 
 
