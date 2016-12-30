@@ -164,7 +164,7 @@ OnTick(function (myHero)
 	    end
 	    	                			
             if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 700) and (EnemiesAround(myHeroPos(), 700) >= RivenMenu.Combo.RX:Value()) then
-			CastSkillShot(_R, enemy)
+			CastSkillShot(_R, target)
             end
 
           end
@@ -200,7 +200,7 @@ OnTick(function (myHero)
                 end 
 
                 if IsReady(_R) and ValidTarget(enemy, 900) and RivenMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
-		                      CastSkillShot(_R, enemy)
+		                      CastSkillShot(_R, target)
   
                 end
       end
