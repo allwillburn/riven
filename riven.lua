@@ -117,7 +117,7 @@ OnTick(function (myHero)
 	--COMBO
 	  if Mix:Mode() == "Combo" then
 		
-	    if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 325) and (EnemiesAround(myHeroPos(), 325) >= RivenMenu.Combo.RX:Value()) then
+	    if RivenMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 500) and (EnemiesAround(myHeroPos(), 500) >= RivenMenu.Combo.RX:Value()) then
 			CastSpell(_R)
             end
 			
