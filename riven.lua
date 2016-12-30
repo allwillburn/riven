@@ -216,7 +216,7 @@ OnTick(function (myHero)
 	        end
 
                 if RivenMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 325) then
-	        	CastSpell(_E)
+	        	CastSkillShot(_E, closeminion)
 	        end
 
                 if RivenMenu.LaneClear.Tiamat:Value() and ValidTarget(closeminion, 350) then
