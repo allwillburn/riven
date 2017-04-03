@@ -35,6 +35,7 @@ local RivenMenu = Menu("Riven", "Riven")
 RivenMenu:SubMenu("Combo", "Combo")
 
 RivenMenu.Combo:Boolean("Q", "Use Q in combo", true)
+RivenMenu.Combo:Boolean("AA", "Use AA in combo", true)
 RivenMenu.Combo:Boolean("W", "Use W in combo", true)
 RivenMenu.Combo:Boolean("E", "Use E in combo", true)
 RivenMenu.Combo:Boolean("R", "Use R in combo", true)
@@ -147,8 +148,37 @@ OnTick(function (myHero)
                      end
             end
 
+            if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
+                         AttackUnit(target)
+            end
+
+            if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 500) then
+		     if target ~= nil then 
+                         CastSkillShot(_Q, target)
+                     end
+            end
+
+            if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
+                         AttackUnit(target)
+            end
+
+            if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 500) then
+		     if target ~= nil then 
+                         CastSkillShot(_Q, target)
+                     end
+            end
+
+            if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
+                         AttackUnit(target)
+            end
+
+
             if RivenMenu.Combo.Tiamat:Value() and Tiamat > 0 and Ready(Tiamat) and ValidTarget(target, 350) then
 			CastSpell(Tiamat)
+            end
+
+            if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
+                         AttackUnit(target)
             end
 
             if RivenMenu.Combo.Gunblade:Value() and Gunblade > 0 and Ready(Gunblade) and ValidTarget(target, 700) then
