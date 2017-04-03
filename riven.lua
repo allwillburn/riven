@@ -1,4 +1,4 @@
-local ver = "0.04"
+local ver = "0.05"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -72,6 +72,7 @@ RivenMenu:SubMenu("KillSteal", "KillSteal")
 RivenMenu.KillSteal:Boolean("Q", "KS w Q", true)
 RivenMenu.KillSteal:Boolean("E", "KS w E", true)
 RivenMenu.KillSteal:Boolean("R", "KS w R", true)
+RivenMenu.KillSteal:Boolean("W", "KS w W", true)
 
 RivenMenu:SubMenu("AutoIgnite", "AutoIgnite")
 RivenMenu.AutoIgnite:Boolean("Ignite", "Ignite if killable", true)
@@ -238,6 +239,14 @@ OnTick(function (myHero)
                 if IsReady(_R) and ValidTarget(enemy, 900) and RivenMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
 		                      CastSkillShot(_R, target)
   
+                end
+			
+		if IsReady(_W) and ValidTarget(enemy, 125) and RivenMenu.KillSteal.W:Value() and GetHP(enemy) < getdmg("W",enemy) then
+		                      CastSpell(_W)  
+                end	
+			
+			if IsReady(_E) and ValidTarget(enemy, 325) and RivenMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
+		                        CastSkillShot(_E, target.pos)
                 end
       end
 
