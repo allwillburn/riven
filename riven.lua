@@ -142,6 +142,10 @@ OnTick(function (myHero)
 			 CastSkillShot(_E, target.pos)
 	    end
 
+            if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then
+			CastSpell(_W)
+            end				
+			
             if RivenMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 500) then
 		     if target ~= nil then 
                          CastSkillShot(_Q, target)
