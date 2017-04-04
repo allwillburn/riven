@@ -344,7 +344,7 @@ OnProcessSpell(function(unit, spell)
 		Mix:ResetAA()
 	end
 		
-		OnProcessSpellComplete(function(unit,spell)
+		
 	if unit == myHero and spell.name:lower():find("attack") then
 		if mainMenu.enabled:Value() then
 			CastEmote(2)
