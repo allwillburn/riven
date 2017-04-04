@@ -344,11 +344,6 @@ OnProcessSpell(function(unit, spell)
 		Mix:ResetAA()
 	end
 		
-		
-	if unit == myHero and spell.name:lower():find("attack") then
-		CastEmote(2)
-		
-	end
 
 
 end) 
