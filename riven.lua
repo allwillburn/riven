@@ -35,7 +35,6 @@ local RivenMenu = Menu("Riven", "Riven")
 RivenMenu:SubMenu("Combo", "Combo")
 
 RivenMenu.Combo:Boolean("Q", "Use Q in combo", true)
-RivenMenu.Combo:Boolean("Emote", "Use Emote in combo", true)
 RivenMenu.Combo:Boolean("AA", "Use AA in combo", true)
 RivenMenu.Combo:Boolean("W", "Use W in combo", true)
 RivenMenu.Combo:Boolean("E", "Use E in combo", true)
@@ -181,10 +180,7 @@ OnTick(function (myHero)
                      end
             end
 			
-	    if RivenMenu.Combo.Emote:Value() then
-			CastEmote(2)
-            end			
-
+	    		
             if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
                          AttackUnit(target)
             end
@@ -347,6 +343,14 @@ OnProcessSpell(function(unit, spell)
         if unit.isMe and spell.name:lower():find("itemravenoushydracrescent") then
 		Mix:ResetAA()
 	end
+		
+		OnProcessSpellComplete(function(unit,spell)
+	if unit == myHero and spell.name:lower():find("attack") then
+		if mainMenu.enabled:Value() then
+			CastEmote(2)
+		end
+	end
+
 
 end) 
 
