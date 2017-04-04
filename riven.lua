@@ -152,7 +152,7 @@ OnTick(function (myHero)
             end		
 			
 	    if RivenMenu.Combo.Emote:Value() then
-			CastEmote(_taunt)
+			CastEmote(taunt)
             end		
 			    
             if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
