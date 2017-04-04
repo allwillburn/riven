@@ -311,6 +311,7 @@ OnTick(function (myHero)
 		
 	if RivenMenu.AutoMode.Emote:Value() then 
                       CastSpell(_taunt)
+	end		
 			
 	--AUTO GHOST
 	if RivenMenu.AutoMode.Ghost:Value() then
