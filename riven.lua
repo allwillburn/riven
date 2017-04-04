@@ -57,6 +57,7 @@ RivenMenu.AutoMode:Boolean("Q", "Auto Q", false)
 RivenMenu.AutoMode:Boolean("W", "Auto W", false)
 RivenMenu.AutoMode:Boolean("E", "Auto E", false)
 RivenMenu.AutoMode:Boolean("R", "Auto R", false)
+RivenMenu.AutoMode:Boolean("Emote", "Emote", false)
 
 RivenMenu:SubMenu("LaneClear", "LaneClear")
 RivenMenu.LaneClear:Boolean("Q", "Use Q", true)
@@ -307,7 +308,10 @@ OnTick(function (myHero)
 		      CastSpell(_R)
 	  end
         end
-                
+		
+	if RivenMenu.AutoMode.Emote:Value() then 
+                      CastSpell(_taunt)
+			
 	--AUTO GHOST
 	if RivenMenu.AutoMode.Ghost:Value() then
 		if GetCastName(myHero, SUMMONER_1) == "SummonerHaste" and Ready(SUMMONER_1) then
