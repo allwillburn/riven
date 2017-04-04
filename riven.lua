@@ -44,6 +44,7 @@ RivenMenu.Combo:Boolean("Cutlass", "Use Cutlass", true)
 RivenMenu.Combo:Boolean("Tiamat", "Use Tiamat", true)
 RivenMenu.Combo:Boolean("BOTRK", "Use BOTRK", true)
 RivenMenu.Combo:Boolean("RHydra", "Use RHydra", true)
+RivenMenu.Combo:Boolean("THydra", "Use THydra", true)
 RivenMenu.Combo:Boolean("YGB", "Use GhostBlade", true)
 RivenMenu.Combo:Boolean("Gunblade", "Use Gunblade", true)
 RivenMenu.Combo:Boolean("Randuins", "Use Randuins", true)
@@ -93,7 +94,8 @@ OnTick(function (myHero)
         local BOTRK = GetItemSlot(myHero, 3153)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
-
+        local THydra = GetItemSlot(myHero, 3748)
+		
 	--AUTO LEVEL UP
 	if RivenMenu.AutoMode.Level:Value() then
 
@@ -198,6 +200,14 @@ OnTick(function (myHero)
             if RivenMenu.Combo.RHydra:Value() and RHydra > 0 and Ready(RHydra) and ValidTarget(target, 400) then
 			CastSpell(RHydra)
             end
+			
+	     if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
+                         AttackUnit(target)
+            end		
+			
+	    if RivenMenu.Combo.THydra:Value() and THydra > 0 and Ready(THydra) and ValidTarget(target, 400) then
+			CastSpell(THydra)
+            end	
 
 	    if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then
 			CastSpell(_W)
