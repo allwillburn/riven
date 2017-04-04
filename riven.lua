@@ -35,6 +35,7 @@ local RivenMenu = Menu("Riven", "Riven")
 RivenMenu:SubMenu("Combo", "Combo")
 
 RivenMenu.Combo:Boolean("Q", "Use Q in combo", true)
+RivenMenu.Combo:Boolean("Emote", "Use Emote in combo", true)
 RivenMenu.Combo:Boolean("AA", "Use AA in combo", true)
 RivenMenu.Combo:Boolean("W", "Use W in combo", true)
 RivenMenu.Combo:Boolean("E", "Use E in combo", true)
@@ -57,7 +58,7 @@ RivenMenu.AutoMode:Boolean("Q", "Auto Q", false)
 RivenMenu.AutoMode:Boolean("W", "Auto W", false)
 RivenMenu.AutoMode:Boolean("E", "Auto E", false)
 RivenMenu.AutoMode:Boolean("R", "Auto R", false)
-RivenMenu.AutoMode:Boolean("Emote", "Emote", false)
+
 
 RivenMenu:SubMenu("LaneClear", "LaneClear")
 RivenMenu.LaneClear:Boolean("Q", "Use Q", true)
@@ -148,9 +149,12 @@ OnTick(function (myHero)
 
             if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then
 			CastSpell(_W)
-            end				
-		
-	    
+            end		
+			
+	    if RivenMenu.Combo.Emote:Value() then
+			CastSpell(_taunt)
+            end		
+			    
             if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
                          AttackUnit(target)
             end		
@@ -309,9 +313,6 @@ OnTick(function (myHero)
 	  end
         end
 		
-	if RivenMenu.AutoMode.Emote:Value() then 
-                      CastSpell(_taunt)
-	end		
 			
 	--AUTO GHOST
 	if RivenMenu.AutoMode.Ghost:Value() then
