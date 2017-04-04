@@ -150,11 +150,7 @@ OnTick(function (myHero)
             if RivenMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then
 			CastSpell(_W)
             end		
-			
-	    if RivenMenu.Combo.Emote:Value() then
-			CastEmote(2)
-            end		
-			    
+			   				    
             if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
                          AttackUnit(target)
             end		
@@ -184,6 +180,10 @@ OnTick(function (myHero)
                          CastSkillShot(_Q, target)
                      end
             end
+			
+	    if RivenMenu.Combo.Emote:Value() then
+			CastEmote(2)
+            end			
 
             if RivenMenu.Combo.AA:Value() and ValidTarget(target, 125) then
                          AttackUnit(target)
